@@ -29,12 +29,8 @@ module.exports = {
                 country_id integer references countries
             );
             
-            INSERT INTO cities (name, rating, country_id)
-            VALUES('Lima', 4, 25),
-            ('London', 2, 21),
-            ('Paris', 1, 20);
-
-
+            
+            
             insert into countries (name)
             values ('Afghanistan'),
             ('Albania'),
@@ -231,11 +227,17 @@ module.exports = {
             ('Yemen'),
             ('Zambia'),
             ('Zimbabwe');
-        `).then(() => {
-            console.log('DB seeded!')
-            res.sendStatus(200)
-        }).catch(err => console.log('error seeding DB', err))
-    },
+
+            
+            INSERT INTO cities (name, rating, country_id)
+            VALUES('Lima', 4, 25),
+            ('London', 2, 21),
+            ('Paris', 1, 20);
+            `).then(() => {
+                console.log('DB seeded!')
+                res.sendStatus(200)
+            }).catch(err => console.log('error seeding DB', err))
+        },
 
     getCountries: (req,res) => {
         sequelize.query(`Select * from countries;`)
